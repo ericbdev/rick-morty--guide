@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -12,8 +12,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@instances/*": ["libs/instances/*"],
+      "@api/*": ["libs/gql/*"],
+      "@components/*": ["libs/ux/components/*"],
+      "@containers/*": ["libs/ux/containers/*"],
+      "@structure/*": ["libs/ux/structure/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "libs/apollo-client.ts"],
   "exclude": ["node_modules"]
 }
