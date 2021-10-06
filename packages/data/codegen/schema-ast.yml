@@ -1,0 +1,13 @@
+overwrite: true
+schema: 'https://rickandmortyapi.com/graphql'
+generates:
+  packages/data/codegen/schema-ast.generated.graphql:
+    plugins:
+      - 'schema-ast'
+    config:
+      includeDirectives: true
+      commentDescriptions: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+

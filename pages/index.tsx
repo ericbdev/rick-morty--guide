@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import Navigation from '@core/Navigation';
+import Navigation from '@wiki/containers/Navigation';
 
 export default function Home() {
   return (
@@ -11,8 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-gray-100">
-        <Navigation />
+      <div className="h-full p-2 bg-gray-100">
+        Home
       </div>
     </>
   );

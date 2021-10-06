@@ -3,10 +3,11 @@ import 'tailwindcss/tailwind.css';
 import type { AppProps } from 'next/app';
 
 import { ApolloProvider } from '@apollo/client';
-import { useApollo } from 'libs/instances/apollo-client';
+import useApollo from '@wiki/apollo/useApollo';
+import { APOLLO_STATE_PROP_NAME } from '@wiki/apollo/initializeApollo';
 
-const App = ({ Component, pageProps }: AppProps) => {
-  const apolloClient = useApollo(pageProps.initialApolloState);
+const App = ({ Component, pageProps }: AppContext & AppInitialProps) => {
+  const apolloClient = useApollo(pageProps);
   return (
     <ApolloProvider client={apolloClient}>
       <Component {...pageProps} />

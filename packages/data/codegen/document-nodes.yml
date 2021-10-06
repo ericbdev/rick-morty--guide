@@ -1,0 +1,7 @@
+documents: packages/data/codegen/schema-ast.generated.graphql
+generates:
+  packages/data/codegen/document-nodes.generated.ts:
+  plugins:
+    - 'typescript-document-nodes'
+  config:
+    namePrefix: 'gql'

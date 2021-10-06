@@ -1,8 +1,13 @@
-const colors = require('tailwindcss/colors');
+const forms = require('@tailwindcss/forms');
+const typography = require('@tailwindcss/typography');
 
 //https://tailwindcss.com/docs/configuration
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './packages/core/components/**/*.{js,ts,jsx,tsx}',
+    './packages/core/containers/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
@@ -10,5 +15,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [forms, typography],
 };

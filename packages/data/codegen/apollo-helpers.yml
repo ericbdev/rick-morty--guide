@@ -1,0 +1,13 @@
+overwrite: true
+schema: 
+  - 'packages/data/codegen/schema-ast.generated.graphql'
+generates:
+  packages/data/codegen/apollo-helpers.generated.ts:
+    plugins:
+      - 'typescript-apollo-client-helpers'
+    config:
+      namePrefix: 'gql'
+hooks:
+  afterAllFileWrite:
+    - prettier --write
+

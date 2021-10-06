@@ -15,13 +15,16 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@instances/*": ["libs/instances/*"],
-      "@api/*": ["libs/gql/*"],
-      "@components/*": ["libs/ux/components/*"],
-      "@containers/*": ["libs/ux/containers/*"],
-      "@structure/*": ["libs/ux/structure/*"]
+      "@wiki/apollo/*": ["packages/data/apollo-client/*"],
+      "@wiki/codegen/*": ["packages/data/codegen/*"],
+      "@wiki/gql/query/*": [
+        "packages/data/models/Character/*.ts",
+        "packages/data/models/Episode/*.ts"
+      ],
+      "@wiki/components/*": ["packages/core/components/*"],
+      "@wiki/containers/*": ["packages/core/containers/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "libs/apollo-client.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
