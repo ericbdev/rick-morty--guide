@@ -10,4 +10,5 @@ generates:
 hooks:
   afterAllFileWrite:
     - prettier --write
+    - eslint --fix
 
