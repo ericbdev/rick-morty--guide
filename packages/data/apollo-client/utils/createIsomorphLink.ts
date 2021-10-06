@@ -1,7 +1,7 @@
-import { makeExecutableSchema } from 'graphql-tools';
+// import { makeExecutableSchema } from 'graphql-tools';
 import { HttpLink } from '@apollo/client';
-import { SchemaLink } from '@apollo/client/link/schema';
-import typeDefs from '@wiki/codegen/schema-ast.generated.graphql';
+// import { SchemaLink } from '@apollo/client/link/schema';
+// import typeDefs from '@wiki/codegen/schema-ast.generated.graphql';
 
 const createIsomorphLink = () => {
   return new HttpLink({

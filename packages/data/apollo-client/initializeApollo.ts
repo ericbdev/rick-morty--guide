@@ -3,17 +3,15 @@
 // https://developers.wpengine.com/blog/apollo-client-cache-rehydration-in-next-js
 // https://github.com/kellenmace/apollo-client-cache-rehydration-in-next-js
 import { NormalizedCacheObject } from '@apollo/client';
-import createApolloClient from './utils/createApolloClient';
 import merge from 'deepmerge';
 import { isEqual } from 'lodash';
-
-export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
+import createApolloClient from './utils/createApolloClient';
 
 let apolloClient;
 const initializeApollo = (
   initialState: NormalizedCacheObject | null = null
 ) => {
-  const _apolloClient = apolloClient ?? createApolloClient(initialState);
+  const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
@@ -47,17 +45,5 @@ const initializeApollo = (
   if (!apolloClient) apolloClient = _apolloClient;
   return _apolloClient;
 };
-
-export function addApolloState(
-  client: ApolloClient<NormalizedCacheObject>,
-  pageProps: any
-) {
-  if (pageProps?.props && typeof client?.cache?.extract === 'function') {
-    console.log(pageProps);
-    pageProps.props[APOLLO_STATE_PROP_NAME] = client?.cache?.extract();
-  }
-
-  return pageProps;
-}
 
 export default initializeApollo;

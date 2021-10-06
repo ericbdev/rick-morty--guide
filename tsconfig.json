@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "paths": {
+      "@wiki/apollo": ["packages/data/apollo-client"],
       "@wiki/apollo/*": ["packages/data/apollo-client/*"],
       "@wiki/codegen/*": ["packages/data/codegen/*"],
       "@wiki/gql/query/*": [
@@ -22,9 +21,15 @@
         "packages/data/models/Episode/*.ts"
       ],
       "@wiki/components/*": ["packages/core/components/*"],
-      "@wiki/containers/*": ["packages/core/containers/*"]
-    }
+      "@wiki/containers/*": ["packages/core/containers/*"],
+      "@wiki/structure/*": ["packages/core/structure/*"]
+    },
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false,
+    "resolveJsonModule": true,
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "./@types/*.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

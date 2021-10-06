@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Button = ({ children, ...props }) => {
-  return <button {...props}>{children}</button>;
-};
+import Element from '@wiki/components/Element';
+
+const Button = ({ children, as = 'button', ...rest }) => (
+  <Element {...rest} className={['cursor-pointer', rest?.className || '']}>
+    {children}
+  </Element>
+);
 
 export default Button;

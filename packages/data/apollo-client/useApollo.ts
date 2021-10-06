@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import initializeApollo, { APOLLO_STATE_PROP_NAME } from './initializeApollo';
+import { initApollo, APOLLO_STATE_PROP_NAME } from './';
 
 const useApollo = (initialState: any) => {
   const state = initialState[APOLLO_STATE_PROP_NAME];
-  const store = useMemo(() => initializeApollo(state), [state]);
+  const store = useMemo(() => initApollo(state), [state]);
   return store;
 };
 

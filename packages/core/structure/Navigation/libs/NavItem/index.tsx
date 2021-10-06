@@ -1,9 +1,8 @@
-import React, { Children } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 
 import Link from '@wiki/components/Link';
 
-const NavItem = ({ children, ...props }) => {
+const NavItem = ({ children, href, ...props }) => {
   const className = [
     'px-3',
     'py-2',
@@ -17,7 +16,13 @@ const NavItem = ({ children, ...props }) => {
 
   return (
     <Link
-      {...{ children, className, activeClassName: 'bg-gray-700', ...props }}
+      {...{
+        children,
+        className,
+        classNameActive: 'bg-gray-800',
+        href,
+        ...props,
+      }}
     />
   );
 };

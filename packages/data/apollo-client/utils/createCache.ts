@@ -1,6 +1,6 @@
 import { InMemoryCache, defaultDataIdFromObject } from '@apollo/client';
-import localForage from 'localforage';
-import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist';
+// import localForage from 'localforage';
+// import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist';
 import { StrictTypedTypePolicies } from '@wiki/codegen/apollo-helpers.generated';
 
 const typePolicies: StrictTypedTypePolicies = {
@@ -10,6 +10,9 @@ const typePolicies: StrictTypedTypePolicies = {
   },
   Character: {
     keyFields: ['id', 'name'],
+  },
+  Location: {
+    keyFields: ['id'],
   },
 };
 
@@ -30,22 +33,22 @@ const cache = new InMemoryCache({
   },
 });
 
-(async () => {
-  if (typeof window !== 'undefined') {
-    const storage = localForage.createInstance({
-      name: 'wiki-cache',
-      driver: [localForage.INDEXEDDB, localForage.LOCALSTORAGE],
-    });
+// (async () => {
+//   if (typeof window !== 'undefined') {
+//     const storage = localForage.createInstance({
+//       name: 'wiki-cache',
+//       driver: [localForage.INDEXEDDB, localForage.LOCALSTORAGE],
+//     });
 
-    await persistCache({
-      cache,
-      key: 'wiki',
-      debug: true,
-      maxSize: false,
-      storage: new LocalForageWrapper(storage),
-    });
-  }
-})();
+//     await persistCache({
+//       cache,
+//       key: 'wiki',
+//       debug: true,
+//       maxSize: false,
+//       storage: new LocalForageWrapper(storage),
+//     });
+//   }
+// })();
 
 const createCache = () => {
   return cache;

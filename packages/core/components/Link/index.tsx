@@ -1,32 +1,52 @@
-import React, { Children } from 'react';
+import React, { useMemo, Children } from 'react';
+import cx from 'classnames';
 import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-const Link = ({
+import { PolymorphicComponentProps } from '@wiki/components/Element';
+
+interface ILinkProps extends NextLinkProps {
+  classNameActive?: string;
+}
+
+type LinkProps<C extends React.ElementType> = PolymorphicComponentProps<
+  C,
+  ILinkProps
+>;
+
+const Link = <C extends React.ElementType = 'a'>({
   children,
-  className: _className,
-  activeClassName,
+  href,
+  className: classNameBase,
+  classNameActive,
   ...props
-}) => {
-  const route = useRouter();
+}: LinkProps<C>) => {
+  const router = useRouter();
   const child = Children.only(children);
-  const _childClassName = child.props.className || '';
-  const styleClassName = `text-sm font-medium text-gray-500`;
-  const childClassName = `${_childClassName} ${styleClassName} ${
-    Array.isArray(_className) ? _className.join(' ') : _className
-  }`.trim();
 
-  // pages/index.js will be matched via props.href
-  // pages/about.js will be matched via props.href
-  // pages/[slug].js will be matched via props.as
-  const className = [props.href, props.as].includes(route?.asPath)
-    ? `${childClassName} ${activeClassName}`.trim()
-    : childClassName;
+  const isActive = useMemo(() => {
+    // pages/index.js will be matched via props.href
+    // pages/about.js will be matched via props.href
+    // pages/[slug].js will be matched via props.as
+    return [href, props?.as].includes(router?.asPath);
+  }, [href, props?.as, router?.asPath]);
+
+  const className = useMemo(() => {
+    const child = Children.only(children);
+    const classNameChild = child?.props?.className || '';
+
+    return cx([
+      'cursor-pointer',
+      classNameBase,
+      classNameChild,
+      isActive && classNameActive,
+    ]);
+  }, [classNameBase, child?.props?.className, isActive]);
 
   return (
-    <NextLink {...props}>
+    <NextLink href={href} {...props}>
       {React.cloneElement(child, {
-        className: className || null,
+        className,
       })}
     </NextLink>
   );

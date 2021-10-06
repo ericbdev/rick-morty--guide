@@ -5,7 +5,7 @@
   "scripts": {
     "pretty-quick": "pretty-quick",
     "dev": "next dev",
-    "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
+    "dev:inspect": "NODE_ENV=development NODE_OPTIONS='--inspect' next dev",
     "gen:docnodes": "graphql-codegen --config packages/data/codegen/document-nodes.yml",
     "gen:achelpers": "graphql-codegen --config packages/data/codegen/apollo-helpers.yml",
     "gen:schema": "graphql-codegen --config packages/data/codegen/schema-ast.yml",

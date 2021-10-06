@@ -1,29 +1,27 @@
-import { useRouter } from 'next/router';
-import { GetStaticPropsContext } from 'next';
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect } from 'react';
+import { useLazyQuery } from '@apollo/client';
+
 import { GET_EPISODES } from '@wiki/gql/query/getEpisodes';
-import initializeApollo, {
-  addApolloState,
-} from '@wiki/apollo/initializeApollo';
-import Navigation from '@wiki/containers/Navigation';
+import { EpisodeOverview } from '@wiki/containers/Episode';
 
-import { Episode } from './episodes/Episode';
+const Episodes = () => {
+  const [getData, { data }] = useLazyQuery(GET_EPISODES);
 
-const Episodes = (props) => {
-  const { loading, error, data } = useQuery(GET_EPISODES, {
-    variables: {
-      page: 1,
-      filter: {
-        episode: 'S01E01',
+  useEffect(() => {
+    getData({
+      variables: {
+        page: 1,
+        filter: {
+          episode: 'S01E01',
+        },
       },
-    },
-  });
+    });
+  }, [getData]);
 
   return (
     <>
-      <section className="container p-0">
-        {(data?.episodes?.results || []).map(Episode)}
+      <section className="container p-0 flex mt-4 gap-4 flex-col">
+        {(data?.episodes?.results || []).map(EpisodeOverview)}
       </section>
     </>
   );
@@ -33,7 +31,6 @@ export default Episodes;
 
 // export async function getServerSideProps(context: GetStaticPropsContext) {
 //   const apolloClient = initializeApollo();
-
 //   await apolloClient.query({
 //     query: GET_POSTS,
 //     variables: {
@@ -43,7 +40,6 @@ export default Episodes;
 //       },
 //     },
 //   });
-
 //   return addApolloState(apolloClient, {
 //     props: {},
 //   });
