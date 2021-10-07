@@ -8,7 +8,7 @@ import {
   PolymorphicComponentProps,
 } from '@wiki/components/Element';
 
-interface ILinkProps extends NextLinkProps {
+export interface ILinkProps extends NextLinkProps {
   classNameActive?: string;
 }
 

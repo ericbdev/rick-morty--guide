@@ -10,7 +10,7 @@ interface IPropsEpisodeOverview {
   name?: string;
   air_date?: string;
   characters?: Array<Record<string, undefined>>;
-  toggleCharacterModal: () => void;
+  toggleCharacterModal: (id) => void;
 }
 
 const EpisodeOverview = (props: IPropsEpisodeOverview) => {

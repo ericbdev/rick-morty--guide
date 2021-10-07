@@ -7,7 +7,7 @@ module.exports = {
     './pages/**/*.{ts,tsx}',
     './packages/features/**/*.{ts,tsx}',
     './packages/ui/components/**/*.{ts,tsx}',
-    './packages/ui/structure/**/*.{ts,tsx}',
+    './packages/ui/containers/**/*.{ts,tsx}',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {

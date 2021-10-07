@@ -5,38 +5,25 @@ import { StrictTypedTypePolicies } from '@wiki/codegen/apollo-helpers.generated'
 
 const typePolicies: StrictTypedTypePolicies = {
   // Keys in this object will be validated against the types on your schema
-  Episode: {
-    keyFields: ['id', 'air_date'], // Values in this field will be validated against the available fields from the Product type
-  },
   Character: {
     keyFields: ['id', 'name'],
   },
   Location: {
     keyFields: ['id'],
   },
+  Episode: {
+    keyFields: ['id', 'air_date'], // Values in this field will be validated against the available fields from the Product type
+  },
   Episodes: {
     keyFields: ['results'],
+  },
+  Query: {
+    keyFields: ['episodes'],
   },
 };
 
 const cache = new InMemoryCache({
   typePolicies,
-  dataIdFromObject(responseObject) {
-    switch (responseObject.__typename) {
-      case 'Location':
-      case 'Character':
-      case 'Episode':
-        if (!responseObject?.id) {
-          return null;
-        }
-        return `${responseObject.__typename}:${responseObject.id}`;
-      case 'Episodes':
-        console.log(responseObject);
-        return null;
-      default:
-        return defaultDataIdFromObject(responseObject);
-    }
-  },
 });
 
 const createCache = () => {

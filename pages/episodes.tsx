@@ -15,7 +15,7 @@ const Episodes = () => {
       variables: {
         page: 1,
         filter: {
-          episode: 'S01E01',
+          episode: 'S01',
         },
       },
     });
