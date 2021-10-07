@@ -9,7 +9,7 @@ interface IPropsBox {
 }
 
 const Box = ({ children, as = 'div', className, ...rest }: IPropsBox) => (
-  <Element {...rest} as={as} className={className}>
+  <Element {...rest} as={as} className={[].concat('container', className)}>
     {children}
   </Element>
 );

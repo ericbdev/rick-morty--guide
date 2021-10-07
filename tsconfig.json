@@ -7,7 +7,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "noEmit": true,
+    "noEmit": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "module": "esnext",
@@ -20,9 +20,9 @@
         "packages/data/models/Character/*.ts",
         "packages/data/models/Episode/*.ts"
       ],
-      "@wiki/components/*": ["packages/core/components/*"],
-      "@wiki/containers/*": ["packages/core/containers/*"],
-      "@wiki/structure/*": ["packages/core/structure/*"]
+      "@wiki/components/*": ["packages/ui/components/*"],
+      "@wiki/containers/*": ["packages/ui/containers/*"],
+      "@wiki/features/*": ["packages/features/*"]
     },
     "skipLibCheck": true,
     "sourceMap": true,

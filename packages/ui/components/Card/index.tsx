@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import cx from 'classnames';
 
 interface ICardProps {
   className?: string | Array<string>;
 }
 
-const Card:FC<ICardProps> = (props) => {
+const Card: FC<ICardProps> = (props) => {
   return (
     <div
       {...props}

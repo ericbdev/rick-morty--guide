@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
 import { GET_EPISODES } from '@wiki/gql/query/getEpisodes';
-import { EpisodeOverview } from '@wiki/containers/Episode';
+import EpisodeOverview from '@wiki/features/Episode/EpisodeOverview';
+import CharacterModal from '@wiki/features/Character/CharacterModal';
+import Modal from '@wiki/components/Modal';
 
 const Episodes = () => {
-  const [getData, { data }] = useLazyQuery(GET_EPISODES);
+  const [getData, { data, loading }] = useLazyQuery(GET_EPISODES);
+  const [characterId, toggleCharacterModal] = useState(null);
 
   useEffect(() => {
     getData({
@@ -20,8 +23,24 @@ const Episodes = () => {
 
   return (
     <>
-      <section className="container p-0 flex mt-4 gap-4 flex-col">
-        {(data?.episodes?.results || []).map(EpisodeOverview)}
+      <section className="container mx-auto p-0 flex mt-4 gap-4 flex-col">
+        {loading && 'loading'}
+        {(data?.episodes?.results || []).map((episode) => {
+          return (
+            <Fragment key={episode.id}>
+              <EpisodeOverview
+                {...episode}
+                toggleCharacterModal={toggleCharacterModal}
+              />
+            </Fragment>
+          );
+        })}
+        <Modal
+          isOpen={Boolean(characterId)}
+          toggleOpen={() => toggleCharacterModal(null)}
+        >
+          <CharacterModal isOpen={Boolean(characterId)} id={characterId} />
+        </Modal>
       </section>
     </>
   );

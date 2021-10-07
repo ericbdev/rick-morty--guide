@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import Navigation from '@wiki/structure/Navigation';
+import Navigation from '@wiki/containers/Navigation';
 
 class DocumentBase extends Document {
   static async getInitialProps(ctx) {
