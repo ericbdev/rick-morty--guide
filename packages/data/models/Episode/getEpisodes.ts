@@ -17,6 +17,7 @@ export const GET_EPISODES = gql`
           id
           type
           name
+          image
           status
           gender
           species
