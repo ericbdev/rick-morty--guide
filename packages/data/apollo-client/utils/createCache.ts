@@ -1,4 +1,4 @@
-import { InMemoryCache, defaultDataIdFromObject } from '@apollo/client';
+import { InMemoryCache } from '@apollo/client';
 import localForage from 'localforage';
 import { persistCache, LocalForageWrapper } from 'apollo3-cache-persist';
 import { StrictTypedTypePolicies } from '@wiki/codegen/apollo-helpers.generated';
