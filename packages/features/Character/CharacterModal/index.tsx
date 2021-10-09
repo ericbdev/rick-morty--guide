@@ -2,7 +2,7 @@ import React, { useEffect, FC } from 'react';
 import { isEmpty } from 'lodash';
 import { useLazyQuery } from '@apollo/client';
 
-import { GET_CHARACTER } from '@wiki/gql/query/getCharacter';
+import { GET_CHARACTER } from '@wiki/gql/character/character';
 import Text, { Richtext } from '@wiki/components/Text';
 
 interface ICharacterModalProps {

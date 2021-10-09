@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { addApollo, initApollo } from '@wiki/apollo';
-import { GET_CHARACTERS } from '@wiki/gql/query/getCharacters';
+import { GET_CHARACTERS } from '@wiki/gql/character/characters';
 import CharacterNug from '@wiki/features/Character/CharacterNug';
 
 const Characters = () => {

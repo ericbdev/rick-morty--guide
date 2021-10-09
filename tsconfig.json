@@ -16,10 +16,7 @@
       "@wiki/apollo": ["packages/data/apollo-client"],
       "@wiki/apollo/*": ["packages/data/apollo-client/*"],
       "@wiki/codegen/*": ["packages/data/codegen/*"],
-      "@wiki/gql/query/*": [
-        "packages/data/models/Character/*.ts",
-        "packages/data/models/Episode/*.ts"
-      ],
+      "@wiki/gql/*": ["packages/data/gql/*"],
       "@wiki/components/*": ["packages/ui/components/*"],
       "@wiki/containers/*": ["packages/ui/containers/*"],
       "@wiki/features/*": ["packages/features/*"]
