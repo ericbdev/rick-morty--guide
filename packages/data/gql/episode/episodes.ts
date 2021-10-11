@@ -14,6 +14,7 @@ export const GET_EPISODES = gql`
         prev
       }
       results {
+        ...EpisodeFields
         characters {
           ...CharacterFields
         }

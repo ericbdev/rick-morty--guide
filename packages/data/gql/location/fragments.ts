@@ -16,6 +16,8 @@ export const LOCATION_AND_RESIDENTS = gql`
     ...LocationFields
     residents {
       id
+      name
+      image
     }
   }
 `;
