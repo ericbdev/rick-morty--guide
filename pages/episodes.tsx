@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
-import { GET_EPISODES } from '@wiki/gql/query/getEpisodes';
+import { GET_EPISODES } from '@wiki/gql/episode/episodes';
 import EpisodeOverview from '@wiki/features/Episode/EpisodeOverview';
 import CharacterModal from '@wiki/features/Character/CharacterModal';
 import Modal from '@wiki/components/Modal';

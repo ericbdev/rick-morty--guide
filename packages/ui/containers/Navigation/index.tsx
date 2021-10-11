@@ -8,6 +8,9 @@ const Navigation = () => (
     <NavItem href="/episodes">
       <a>Episodes</a>
     </NavItem>
+    <NavItem href="/experiments">
+      <a>Experiments</a>
+    </NavItem>
   </nav>
 );
 

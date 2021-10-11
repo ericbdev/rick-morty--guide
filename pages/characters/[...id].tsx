@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import { useRouter } from 'next/router';
 import { useLazyQuery } from '@apollo/client';
 
-import { GET_CHARACTER } from '@wiki/gql/query/getCharacter';
+import { GET_CHARACTER } from '@wiki/gql/character/character';
 import Card from '@wiki/components/Card';
 import Text, { Richtext } from '@wiki/components/Text';
 
