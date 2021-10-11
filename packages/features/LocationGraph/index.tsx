@@ -9,8 +9,15 @@ const NoSSRForceGraph = dynamic(() => import('@wiki/containers/ForceGraph'), {
   ssr: false,
 });
 
-const Location = ({ data }) => {
-  const graphData = formatData(data);
+interface Location {
+  id: string;
+}
+interface IPropsLocationGraph {
+  locations?: Array<Location>;
+}
+
+const LocationGraph = ({ locations }: IPropsLocationGraph) => {
+  const graphData = formatData(locations);
 
   return (
     <NoSSRForceGraph
@@ -23,4 +30,4 @@ const Location = ({ data }) => {
   );
 };
 
-export default Location;
+export default LocationGraph;

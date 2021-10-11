@@ -25,7 +25,7 @@ const Experiments = () => {
     return data?.locations?.results;
   }, [data]);
 
-  return <LocationGraph data={resData} />;
+  return <LocationGraph locations={resData} />;
 };
 
 export default Experiments;
