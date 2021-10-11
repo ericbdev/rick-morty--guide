@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { memo } from 'react';
 
 import Box from '@wiki/components/Box';
@@ -14,6 +15,7 @@ interface IPropsCharacterOrigin {
   status?: string;
   gender?: string;
   type?: string;
+  image?: string;
   origin?: any;
   // TODO: If not provided, redirect to character page
   onClick?: (event: MouseEvent) => void;
@@ -26,16 +28,25 @@ const CharacterNug = ({
   status,
   gender,
   type,
+  image,
   origin,
   onClick,
 }: IPropsCharacterOrigin) => {
   return (
     <Card key={id} className={['flex', 'flex-initial', 'flex-row', 'gap-4']}>
-      <Box className={['p-0']}>
-        <Text className={['prose']}>{name}</Text>
-        todo: image
+      <Box className={['p-0', 'relative', 'w-80']}>
+        {image && (
+          <Image
+            alt={`Image of ${name}, a character`}
+            src={image}
+            layout="responsive"
+            width={300}
+            height={300}
+          />
+        )}
       </Box>
       <Box className={['flex', 'flex-col']}>
+        <Text className={['prose', 'prose-lg']}>{name}</Text>
         <div>species: {species}</div>
         <div>status: {status}</div>
         <div>gender: {gender}</div>
