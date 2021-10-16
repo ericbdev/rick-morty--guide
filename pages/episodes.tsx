@@ -14,9 +14,6 @@ const Episodes = () => {
     getData({
       variables: {
         page: 1,
-        filter: {
-          episode: 'S01',
-        },
       },
     });
   }, [getData]);

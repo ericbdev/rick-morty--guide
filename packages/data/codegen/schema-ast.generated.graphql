@@ -2,7 +2,10 @@ schema {
   query: Query
 }
 
-directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | INTERFACE | OBJECT
+directive @cacheControl(
+  maxAge: Int
+  scope: CacheControlScope
+) on FIELD_DEFINITION | INTERFACE | OBJECT
 
 enum CacheControlScope {
   PRIVATE
@@ -10,30 +13,50 @@ enum CacheControlScope {
 }
 
 type Character {
-  """Time at which the character was created in the database."""
+  """
+  Time at which the character was created in the database.
+  """
   created: String
-  """Episodes in which this character appeared."""
+  """
+  Episodes in which this character appeared.
+  """
   episode: [Episode]!
-  """The gender of the character ('Female', 'Male', 'Genderless' or 'unknown')."""
+  """
+  The gender of the character ('Female', 'Male', 'Genderless' or 'unknown').
+  """
   gender: String
-  """The id of the character."""
+  """
+  The id of the character.
+  """
   id: ID
   """
   Link to the character's image.
   All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.
   """
   image: String
-  """The character's last known location"""
+  """
+  The character's last known location
+  """
   location: Location
-  """The name of the character."""
+  """
+  The name of the character.
+  """
   name: String
-  """The character's origin location"""
+  """
+  The character's origin location
+  """
   origin: Location
-  """The species of the character."""
+  """
+  The species of the character.
+  """
   species: String
-  """The status of the character ('Alive', 'Dead' or 'unknown')."""
+  """
+  The status of the character ('Alive', 'Dead' or 'unknown').
+  """
   status: String
-  """The type or subspecies of the character."""
+  """
+  The type or subspecies of the character.
+  """
   type: String
 }
 
@@ -43,17 +66,29 @@ type Characters {
 }
 
 type Episode {
-  """The air date of the episode."""
+  """
+  The air date of the episode.
+  """
   air_date: String
-  """List of characters who have been seen in the episode."""
+  """
+  List of characters who have been seen in the episode.
+  """
   characters: [Character]!
-  """Time at which the episode was created in the database."""
+  """
+  Time at which the episode was created in the database.
+  """
   created: String
-  """The code of the episode."""
+  """
+  The code of the episode.
+  """
   episode: String
-  """The id of the episode."""
+  """
+  The id of the episode.
+  """
   id: ID
-  """The name of the episode."""
+  """
+  The name of the episode.
+  """
   name: String
 }
 
@@ -82,28 +117,48 @@ input FilterLocation {
 }
 
 type Info {
-  """The length of the response."""
+  """
+  The length of the response.
+  """
   count: Int
-  """Number of the next page (if it exists)"""
+  """
+  Number of the next page (if it exists)
+  """
   next: Int
-  """The amount of pages."""
+  """
+  The amount of pages.
+  """
   pages: Int
-  """Number of the previous page (if it exists)"""
+  """
+  Number of the previous page (if it exists)
+  """
   prev: Int
 }
 
 type Location {
-  """Time at which the location was created in the database."""
+  """
+  Time at which the location was created in the database.
+  """
   created: String
-  """The dimension in which the location is located."""
+  """
+  The dimension in which the location is located.
+  """
   dimension: String
-  """The id of the location."""
+  """
+  The id of the location.
+  """
   id: ID
-  """The name of the location."""
+  """
+  The name of the location.
+  """
   name: String
-  """List of characters who have been last seen in the location."""
+  """
+  List of characters who have been last seen in the location.
+  """
   residents: [Character]!
-  """The type of the location."""
+  """
+  The type of the location.
+  """
   type: String
 }
 
@@ -113,25 +168,45 @@ type Locations {
 }
 
 type Query {
-  """Get a specific character by ID"""
+  """
+  Get a specific character by ID
+  """
   character(id: ID!): Character
-  """Get the list of all characters"""
+  """
+  Get the list of all characters
+  """
   characters(filter: FilterCharacter, page: Int): Characters
-  """Get a list of characters selected by ids"""
+  """
+  Get a list of characters selected by ids
+  """
   charactersByIds(ids: [ID!]!): [Character]
-  """Get a specific episode by ID"""
+  """
+  Get a specific episode by ID
+  """
   episode(id: ID!): Episode
-  """Get the list of all episodes"""
+  """
+  Get the list of all episodes
+  """
   episodes(filter: FilterEpisode, page: Int): Episodes
-  """Get a list of episodes selected by ids"""
+  """
+  Get a list of episodes selected by ids
+  """
   episodesByIds(ids: [ID!]!): [Episode]
-  """Get a specific locations by ID"""
+  """
+  Get a specific locations by ID
+  """
   location(id: ID!): Location
-  """Get the list of all locations"""
+  """
+  Get the list of all locations
+  """
   locations(filter: FilterLocation, page: Int): Locations
-  """Get a list of locations selected by ids"""
+  """
+  Get a list of locations selected by ids
+  """
   locationsByIds(ids: [ID!]!): [Location]
 }
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
